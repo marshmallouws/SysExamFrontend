@@ -2,6 +2,14 @@ import React from "react";
 import Event from "./Event";
 
 const EventList = ({ data }) => {
+  const events = data.map((event, index) => (
+    <tr key={index}>
+      <td>
+        <Event event={event} />
+      </td>
+    </tr>
+  ));
+
   return (
     <div className="content col-9">
       <table>
@@ -10,18 +18,7 @@ const EventList = ({ data }) => {
             <th>Event</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>
-              <Event event="event 1" />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <Event event="event 2" />
-            </td>
-          </tr>
-        </tbody>
+        <tbody>{events}</tbody>
       </table>
     </div>
   );
