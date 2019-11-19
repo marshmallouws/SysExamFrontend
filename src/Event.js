@@ -3,7 +3,9 @@ import React from "react";
 const Event = ({ event }) => {
   return (
     <div>
-      <p>{event.name}</p>
+      <p>
+        {event.full_name} - {event.league.name}
+      </p>
     </div>
   );
 };

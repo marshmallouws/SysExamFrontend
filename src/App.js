@@ -27,6 +27,7 @@ function App() {
 
   useEffect(() => {
     facade.getEvents().then(res => {
+      console.log(res);
       setEvents(res);
     });
   }, []);
