@@ -7,14 +7,20 @@ const EventList = ({ data }) => {
       <p>{data}</p>
       <table>
         <thead>
-          <th>Event</th>
+          <tr>
+            <th>Event</th>
+          </tr>
         </thead>
         <tbody>
           <tr>
-            <Event event="event 1" />
+            <td>
+              <Event event="event 1" />
+            </td>
           </tr>
           <tr>
-            <Event event="event 2" />
+            <td>
+              <Event event="event 2" />
+            </td>
           </tr>
         </tbody>
       </table>
