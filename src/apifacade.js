@@ -29,12 +29,18 @@ class ApiFacade {
         const promise = fetch(URL + "/api/login", options) 
             .then(handleHttpErrors);
         
-        promise.then(res => this.setToken(res.token));
-        return promise;
+        //promise.then(res => this.setToken(res.token));
+        //return promise;
     }
 
     getEvents = () => {
-        return "En liste med alle events.."
+        const token = "uNIfp_1YhqRYLQTjQmWHXfiuQxg-r01KBjo_NOtr8k4ncXJLQ6g";
+        const promise = fetch("https://api.pandascore.co/series?token=" + token)
+        .then(handleHttpErrors);
+
+        promise.then(res => console.log(res));
+        
+        //return promise;
     }
 
     makeOptions(method, addToken, body) {
