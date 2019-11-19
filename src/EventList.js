@@ -23,9 +23,9 @@ const EventList = ({ data }) => {
             <th>
               <div className="eventlist-settings">
                 <h6>Advanced Search</h6>
-                <div class="form-group">
-                  <label for="gameSelect">Game</label>
-                  <select class="form-control" id="gameSelect">
+                <div className="form-group">
+                  <label htmlFor="gameSelect">Game</label>
+                  <select className="form-control" id="gameSelect">
                     <option>All</option>
                     <option>League of Legends</option>
                     <option>Dota 2</option>

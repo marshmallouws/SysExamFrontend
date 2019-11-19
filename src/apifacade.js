@@ -31,8 +31,8 @@ class ApiFacade {
     });
     const promise = fetch(URL + "/api/login", options).then(handleHttpErrors);
 
-    //promise.then(res => this.setToken(res.token));
-    //return promise;
+    promise.then(res => this.setToken(res.token));
+    return promise;
   };
 
   getEvents = () => {
