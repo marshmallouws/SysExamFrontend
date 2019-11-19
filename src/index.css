@@ -1,8 +1,12 @@
 :root {
   --primary-gray: #e5dfdf;
-  --secondary-color: #6ba8a9;
-  --mid-color: #357376;
-  --dark-color: #1d4d4f;
+  --primary-light: #6ba8a9;
+  --primary-mid: #357376;
+  --primary-dark: #1d4d4f;
+  --secondary-gray: #c9d1d3;
+  --secondary-light: #00909e;
+  --secondary-mid: #465881;
+  --secondary-dark: #1b2a49;
 }
 
 body {
@@ -33,7 +37,7 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: var(--dark-color);
+  background-color: var(--primary-dark);
 }
 
 li {
@@ -50,12 +54,12 @@ li a {
 
 /* Change the link color to #111 (black) on hover */
 li a:hover {
-  background-color: var(--secondary-color);
+  background-color: var(--primary-light);
   text-decoration: none;
-  color: var(--dark-color);
+  color: var(--primary-dark);
 }
 
 .active {
   background-color: var(--primary-gray);
-  color: var(--dark-color);
+  color: var(--primary-dark);
 }
