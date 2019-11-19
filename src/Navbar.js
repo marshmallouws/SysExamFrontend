@@ -26,7 +26,7 @@ function Navbar(props) {
         <ul>
           <li className="logo">
             <img src="./assets/logo.png" />
-            ESportsTraveller
+            <span>ESportsTraveller</span>
           </li>
           <li>
             <NavLink exact to="/">
