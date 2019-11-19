@@ -2,6 +2,9 @@ import React, { useState } from "react"
 import facade from "./apifacade";
 import Navbar from "./Navbar";
 import Login from "./Login";
+
+import EventList from './EventList';
+
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -19,12 +22,15 @@ function App() {
     setUsername(u);
   }
 
+  const [events, setEvents] = useState([facade.getEvents()]);
+
   return (
     <Router>
       <Navbar />
       <Switch>
         <Route exact path="/">
           <Home />
+          <EventList data={events} />
         </Route>
         <Route path="/login">
           <Login logInState={logInState} />

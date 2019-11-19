@@ -33,6 +33,10 @@ class ApiFacade {
         return promise;
     }
 
+    getEvents = () => {
+        return "En liste med alle events.."
+    }
+
     makeOptions(method, addToken, body) {
         var opts = {
             method: method,
