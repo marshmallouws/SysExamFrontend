@@ -28,23 +28,26 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <Switch>
-        <div className="page-wrapper">
-          <Route exact path="/">
-            <EventList data={events} />
-            <Sidebar />
-          </Route>
-          <Route path="/login">
-            <Login logInState={logInState} />
-          </Route>
-          <PrivateRoute
-            path="/user"
-            component={LoggedIn}
-            roles={roles}
-            username={username}
-          />
+      <div className="page-wrapper">
+        <div className="row">
+          <Switch>
+            <Route exact path="/">
+              <EventList data={events} />
+              <Sidebar />
+            </Route>
+            <Route path="/login">
+              <Login logInState={logInState} />
+            </Route>
+            <PrivateRoute
+              path="/user"
+              component={LoggedIn}
+              roles={roles}
+              username={username}
+            />
+          </Switch>
         </div>
-      </Switch>
+      </div>
+      <footer>Copyright &copy; 2019 EsportsTraveller</footer>
     </Router>
   );
 }

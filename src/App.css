@@ -50,3 +50,15 @@ h2.headline {
   padding-bottom: 10px;
   border-bottom: 1px solid;
 }
+
+.page-wrapper {
+  max-width: 1280px;
+  margin: auto;
+  margin-top: 15px;
+}
+
+.content {
+}
+
+.sidebar {
+}
