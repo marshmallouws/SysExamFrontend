@@ -15,7 +15,26 @@ const EventList = ({ data }) => {
       <table>
         <thead>
           <tr>
-            <th>Event</th>
+            <th>
+              <h2>Events</h2>
+            </th>
+          </tr>
+          <tr>
+            <th>
+              <div className="eventlist-settings">
+                <h6>Advanced Search</h6>
+                <div class="form-group">
+                  <label for="gameSelect">Game</label>
+                  <select class="form-control" id="gameSelect">
+                    <option>All</option>
+                    <option>League of Legends</option>
+                    <option>Dota 2</option>
+                    <option>CS:GO</option>
+                    <option>Overwatch</option>
+                  </select>
+                </div>
+              </div>
+            </th>
           </tr>
         </thead>
         <tbody>{events}</tbody>

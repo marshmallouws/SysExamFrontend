@@ -38,7 +38,7 @@ class ApiFacade {
   getEvents = () => {
     const token = "uNIfp_1YhqRYLQTjQmWHXfiuQxg-r01KBjo_NOtr8k4ncXJLQ6g";
     const promise = fetch(
-      "https://api.pandascore.co/series?token=" + token
+      "https://api.pandascore.co/series?sort=-year&per_page=15&token=" + token
     ).then(handleHttpErrors);
     return promise;
   };

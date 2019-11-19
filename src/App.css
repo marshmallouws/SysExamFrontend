@@ -55,12 +55,24 @@ h2.headline {
   max-width: 1280px;
   margin: auto;
   margin-top: 15px;
+  margin-bottom: 100px;
 }
 
 .content {
 }
 
+.content table {
+  width: 100%;
+}
+
+.content table > tbody > tr:last-child > td > div.event-box {
+  margin-bottom: 0px;
+}
+
 .sidebar {
+  background-color: var(--primary-light);
+  border-radius: 5px;
+  margin-top: 48px;
 }
 
 .btn-primary {
@@ -71,4 +83,51 @@ h2.headline {
 .btn-primary:hover {
   background-color: var(--primary-mid);
   border-color: var(--primary-light);
+}
+
+.eventlist-settings {
+  padding: 15px;
+  background-color: var(--primary-dark);
+  color: var(--primary-gray);
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
+
+.event-box {
+  padding: 15px;
+  width: 100%;
+  min-height: 200px;
+  background-color: var(--primary-mid);
+  color: var(--primary-gray);
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.event-box .information {
+  float: left;
+}
+
+.event-box img {
+  height: 120px;
+  float: right;
+  margin: 20px;
+}
+
+.event-box h3 {
+  text-align: left;
+  font-size: 15pt;
+  border-bottom: 2px solid var(--primary-light);
+}
+
+.event-box .game-name {
+  max-width: max-content;
+  background-color: var(--primary-dark);
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.clear-floats {
+  clear: both;
 }
