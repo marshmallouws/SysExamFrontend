@@ -29,19 +29,21 @@ function App() {
     <Router>
       <Navbar />
       <Switch>
-        <Route exact path="/">
-          <EventList data={events} />
-          <Sidebar />
-        </Route>
-        <Route path="/login">
-          <Login logInState={logInState} />
-        </Route>
-        <PrivateRoute
-          path="/user"
-          component={LoggedIn}
-          roles={roles}
-          username={username}
-        />
+        <div className="page-wrapper">
+          <Route exact path="/">
+            <EventList data={events} />
+            <Sidebar />
+          </Route>
+          <Route path="/login">
+            <Login logInState={logInState} />
+          </Route>
+          <PrivateRoute
+            path="/user"
+            component={LoggedIn}
+            roles={roles}
+            username={username}
+          />
+        </div>
       </Switch>
     </Router>
   );
