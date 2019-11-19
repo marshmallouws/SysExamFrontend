@@ -3,7 +3,7 @@ import Event from "./Event";
 
 const EventList = ({ data }) => {
   return (
-    <div>
+    <div className="content col-9">
       <p>{data}</p>
       <table>
         <thead>
