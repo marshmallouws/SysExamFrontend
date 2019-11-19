@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 
 const Event = ({ event }) => {
   const beginTime =
@@ -25,6 +26,9 @@ const Event = ({ event }) => {
           Prize Pool:{" "}
           <strong>{event.prizepool == null ? "TBA" : event.prizepool}</strong>
         </p>
+
+        <Link to={`details/${event.id}`}>Link to Event</Link>
+
       </div>
       <div className="clear-floats"></div>
     </div>

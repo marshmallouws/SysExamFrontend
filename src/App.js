@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import Login from "./Login";
 
 import EventList from "./EventList";
+import EventDetails from "./EventDetails";
 import Sidebar from "./Sidebar";
 
 import "./App.css";
@@ -42,6 +43,11 @@ function App() {
               <EventList data={events} />
               <Sidebar />
             </Route>
+
+            <Route path="/details/:eventId"
+              render={(props) => <EventDetails data={events} {...props} />}
+            />
+            
             <Route path="/login">
               <Login logInState={logInState} />
             </Route>
