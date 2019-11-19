@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Event = () => {
+const Event = ({event}) => {
     return (
         <div>
-            <p>Et event..</p>
+            <p>{event}</p>
         </div>
     )
 }
