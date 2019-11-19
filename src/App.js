@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import facade from "./apifacade";
 import Navbar from "./Navbar";
 import Login from "./Login";
@@ -23,7 +23,13 @@ function App() {
     setUsername(u);
   };
 
-  const [events, setEvents] = useState([facade.getEvents()]);
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    facade.getEvents().then(res => {
+      setEvents(res);
+    });
+  }, []);
 
   return (
     <Router>

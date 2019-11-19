@@ -2,10 +2,8 @@ import React from "react";
 import Event from "./Event";
 
 const EventList = ({ data }) => {
-    console.log(data)
   return (
     <div className="content col-9">
-      <p>{data}</p>
       <table>
         <thead>
           <tr>
