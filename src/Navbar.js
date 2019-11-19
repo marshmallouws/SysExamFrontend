@@ -39,13 +39,13 @@ function Navbar(props) {
 
           {facade.getToken() == null ? (
             <li style={{ float: "right" }}>
-              <Link to="/login">Log in</Link>
+              <NavLink to="/login">Login</NavLink>
             </li>
           ) : (
             <li style={{ float: "right" }}>
-              <Link to="/" onClick={logout}>
+              <NavLink to="/" onClick={logout}>
                 Log out
-              </Link>
+              </NavLink>
             </li>
           )}
         </ul>

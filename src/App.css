@@ -62,3 +62,13 @@ h2.headline {
 
 .sidebar {
 }
+
+.btn-primary {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-mid);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-mid);
+  border-color: var(--primary-light);
+}
