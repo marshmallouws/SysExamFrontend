@@ -1,7 +1,7 @@
 import React from "react";
 import Event from "./Event";
 
-const EventList = ({ data }) => {
+const EventList = ({ data, selecter }) => {
   const events = data.map((event, index) => (
     <tr key={index}>
       <td>
@@ -25,11 +25,11 @@ const EventList = ({ data }) => {
                 <h6>Advanced Search</h6>
                 <div className="form-group">
                   <label htmlFor="gameSelect">Game</label>
-                  <select className="form-control" id="gameSelect">
-                    <option>All</option>
-                    <option>League of Legends</option>
-                    <option>Dota 2</option>
-                    <option>CS:GO</option>
+                  <select className="form-control" id="gameSelect" onChange={selecter}>
+                    <option value="reset-all">All</option>
+                    <option value="league-of-legends">League of Legends</option>
+                    <option value="dota-2">Dota 2</option>
+                    <option value="cs-go">CS:GO</option>
                     <option>Overwatch</option>
                   </select>
                 </div>

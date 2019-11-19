@@ -24,14 +24,29 @@ function App() {
     setUsername(u);
   };
 
-  const [events, setEvents] = useState([]);
+  const [events, setEvents] = useState([]); // all events from API call
+  const [selected, setSelected] = useState([]); // what to show on page
 
   useEffect(() => {
     facade.getEvents().then(res => {
       console.log(res);
       setEvents(res);
+      setSelected(res);
     });
   }, []);
+
+  // used to filter event when selecting a game
+  const handleSelectGameMain = (e) => {
+    if (e.target.value == "reset-all") {
+      setSelected(events);
+    } else {
+      const filter = events.filter(x => {
+        return x.videogame.slug == e.target.value;
+      });
+      setSelected(filter);
+    }
+    
+  }
 
   return (
     <Router>
@@ -40,7 +55,7 @@ function App() {
         <div className="row">
           <Switch>
             <Route exact path="/">
-              <EventList data={events} />
+              <EventList data={selected} selecter={handleSelectGameMain} />
               <Sidebar />
             </Route>
 
