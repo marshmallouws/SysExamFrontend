@@ -1,4 +1,4 @@
-const URL = "http://localhost:8080/securitystarter";
+const URL = "http://localhost:8080/ExamProject";
 function handleHttpErrors(res) {
   if (!res.ok) {
     return Promise.reject({ status: res.status, fullError: res.json() });
@@ -36,10 +36,8 @@ class ApiFacade {
   };
 
   getEvents = () => {
-    const token = "uNIfp_1YhqRYLQTjQmWHXfiuQxg-r01KBjo_NOtr8k4ncXJLQ6g";
-    const promise = fetch(
-      "https://api.pandascore.co/series?sort=-year&per_page=15&token=" + token
-    ).then(handleHttpErrors);
+    const promise = fetch(URL + "/api/series/first15")
+    .then(handleHttpErrors);
     return promise;
   };
 
