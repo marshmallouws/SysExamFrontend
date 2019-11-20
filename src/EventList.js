@@ -5,7 +5,7 @@ const EventList = ({ data, selecter }) => {
   const events = data.map((event, index) => (
     <tr key={index}>
       <td>
-        <Event event={event} />
+        <Event event={event} selector={selecter} />
       </td>
     </tr>
   ));

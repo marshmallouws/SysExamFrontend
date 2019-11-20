@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Event = ({ event, returnLink }) => {
+const Event = ({ event, returnLink, selector }) => {
   const beginTime =
     event.begin_at == null
       ? "TBA"
@@ -26,7 +26,13 @@ const Event = ({ event, returnLink }) => {
     <div className="event-box">
       <img src={event.league.image_url} alt={event.league.name} />
       <div className="information">
-        <div className="game-name">{event.videogame.name.toUpperCase()}</div>
+        <div
+          className="game-name"
+          data-value={event.videogame.slug}
+          onClick={selector}
+        >
+          {event.videogame.name.toUpperCase()}
+        </div>
         <h3>
           {event.full_name} - {event.league.name}
         </h3>

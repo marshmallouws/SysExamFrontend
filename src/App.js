@@ -37,11 +37,16 @@ function App() {
 
   // used to filter event when selecting a game
   const handleSelectGameMain = e => {
-    if (e.target.value === "reset-all") {
+    const value =
+      e.target.dataset.value !== undefined
+        ? e.target.dataset.value
+        : e.target.value;
+    if (value === "reset-all") {
       setSelected(events);
     } else {
+      document.getElementById("gameSelect").value = value;
       const filter = events.filter(x => {
-        return x.videogame.slug === e.target.value;
+        return x.videogame.slug === value;
       });
       setSelected(filter);
     }
