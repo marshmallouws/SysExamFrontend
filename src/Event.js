@@ -18,7 +18,7 @@ const Event = ({ event, returnLink, selector }) => {
     </Link>
   ) : (
     <Link to={`details/${event.id}`} className="btn btn-primary">
-      Link to Event
+      Event Information
     </Link>
   );
 
