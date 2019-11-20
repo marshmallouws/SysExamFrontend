@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Event = ({ event }) => {
+const Event = ({ event, returnLink }) => {
   const beginTime =
     event.begin_at == null
       ? "TBA"
@@ -11,6 +11,16 @@ const Event = ({ event }) => {
       ? "TBA"
       : event.end_at.replace("T", " ").replace("Z", "");
   const eventTimes = beginTime + " - " + endTime;
+
+  const link = returnLink ? (
+    <Link to="/" className="btn btn-primary">
+      Back
+    </Link>
+  ) : (
+    <Link to={`details/${event.id}`} className="btn btn-primary">
+      Link to Event
+    </Link>
+  );
 
   return (
     <div className="event-box">
@@ -27,9 +37,7 @@ const Event = ({ event }) => {
           <strong>{event.prizepool == null ? "TBA" : event.prizepool}</strong>
         </p>
 
-        <Link to={`details/${event.id}`} className="btn btn-primary">
-          Link to Event
-        </Link>
+        {link}
       </div>
       <div className="clear-floats"></div>
     </div>
