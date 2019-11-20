@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import facade from "./apifacade";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Navbar(props) {
   const [isAuthenticating, setIsAuthenticating] = useState(true);
@@ -25,7 +25,7 @@ function Navbar(props) {
       <nav className="header">
         <ul>
           <li className="logo">
-            <img src="./assets/logo.png" />
+            <img src="./assets/logo.png" alt="Logo" />
             <span>ESportsTraveller</span>
           </li>
           <li>

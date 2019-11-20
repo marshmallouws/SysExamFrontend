@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const Event = ({ event }) => {
   const beginTime =
@@ -14,7 +14,7 @@ const Event = ({ event }) => {
 
   return (
     <div className="event-box">
-      <img src={event.league.image_url} />
+      <img src={event.league.image_url} alt={event.league.name} />
       <div className="information">
         <div className="game-name">{event.videogame.name.toUpperCase()}</div>
         <h3>
@@ -27,8 +27,9 @@ const Event = ({ event }) => {
           <strong>{event.prizepool == null ? "TBA" : event.prizepool}</strong>
         </p>
 
-        <Link to={`details/${event.id}`} className="btn btn-primary">Link to Event</Link>
-
+        <Link to={`details/${event.id}`} className="btn btn-primary">
+          Link to Event
+        </Link>
       </div>
       <div className="clear-floats"></div>
     </div>

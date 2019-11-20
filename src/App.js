@@ -36,17 +36,16 @@ function App() {
   }, []);
 
   // used to filter event when selecting a game
-  const handleSelectGameMain = (e) => {
-    if (e.target.value == "reset-all") {
+  const handleSelectGameMain = e => {
+    if (e.target.value === "reset-all") {
       setSelected(events);
     } else {
       const filter = events.filter(x => {
-        return x.videogame.slug == e.target.value;
+        return x.videogame.slug === e.target.value;
       });
       setSelected(filter);
     }
-    
-  }
+  };
 
   return (
     <Router>
@@ -59,10 +58,16 @@ function App() {
               <Sidebar />
             </Route>
 
-            <Route path="/details/:eventId"
-              render={(props) => <EventDetails data={events} {...props} />}
+            <Route
+              path="/details/:eventId"
+              render={props => (
+                <React.Fragment>
+                  <EventDetails data={events} {...props} />
+                  <Sidebar />
+                </React.Fragment>
+              )}
             />
-            
+
             <Route path="/login">
               <Login logInState={logInState} />
             </Route>

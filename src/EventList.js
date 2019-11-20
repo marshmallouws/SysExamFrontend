@@ -25,7 +25,11 @@ const EventList = ({ data, selecter }) => {
                 <h6>Advanced Search</h6>
                 <div className="form-group">
                   <label htmlFor="gameSelect">Game</label>
-                  <select className="form-control" id="gameSelect" onChange={selecter}>
+                  <select
+                    className="form-control"
+                    id="gameSelect"
+                    onChange={selecter}
+                  >
                     <option value="reset-all">All</option>
                     <option value="league-of-legends">League of Legends</option>
                     <option value="dota-2">Dota 2</option>
