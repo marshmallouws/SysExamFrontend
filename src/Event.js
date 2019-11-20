@@ -27,7 +27,7 @@ const Event = ({ event }) => {
           <strong>{event.prizepool == null ? "TBA" : event.prizepool}</strong>
         </p>
 
-        <Link to={`details/${event.id}`}>Link to Event</Link>
+        <Link to={`details/${event.id}`} className="btn btn-primary">Link to Event</Link>
 
       </div>
       <div className="clear-floats"></div>

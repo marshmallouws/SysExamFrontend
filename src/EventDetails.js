@@ -34,13 +34,13 @@ const EventDetails = ({ match, data }) => {
                     </p>
                 </div>
                 <div className="clear-floats"></div>
-                <Link to="/">Back</Link>
+                <Link to="/" className="btn btn-primary">Back</Link>
             </div>
 
     } else {
         eventData = <div className="event-box">
             <p>No event found with id {match.params.eventId}</p>
-            <Link to="/">Back</Link>
+            <Link to="/" className="btn btn-primary">Back</Link>
         </div>
     }
 
