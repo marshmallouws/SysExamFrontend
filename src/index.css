@@ -3,6 +3,7 @@
   --primary-light: #6ba8a9;
   --primary-mid: #357376;
   --primary-dark: #1d4d4f;
+  --primary-fulldark: #0c2021;
   --secondary-gray: #c9d1d3;
   --secondary-light: #00909e;
   --secondary-mid: #465881;
@@ -16,13 +17,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--primary-gray);
-
-  background-image: url(/assets/dust_scratches.png);
-  background-position: left top;
-  background-size: auto;
-  background-repeat: repeat;
-  background-attachment: scroll;
+  background-color: var(--primary-fulldark);
 }
 
 code {
@@ -32,7 +27,7 @@ code {
 
 h2 {
   text-align: left;
-  color: var(--primary-dark);
+  color: var(--primary-mid);
 }
 
 .wrapper {
