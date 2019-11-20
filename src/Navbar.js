@@ -25,7 +25,7 @@ function Navbar(props) {
       <nav className="header">
         <ul>
           <li className="logo">
-            <img src="./assets/logo.png" alt="Logo" />
+            <img src="/assets/logo.png" />
             <span>ESportsTraveller</span>
           </li>
           <li>
