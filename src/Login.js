@@ -45,8 +45,8 @@ function Login(props) {
               <button className="btn btn-primary">Login</button>
             </div>
           </form>
-          <Link to="/register" className="btn btn-primary">
-          Register
+          <Link to="/register">
+          Link to Register
         </Link>
         </div>
       </div>
