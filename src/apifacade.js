@@ -29,7 +29,7 @@ class ApiFacade {
       username: user,
       password: pass
     });
-    const promise = fetch(URL + "/api/login", options).then(handleHttpErrors);
+    const promise = fetch(URL + "/api/auth/login", options).then(handleHttpErrors);
 
     promise.then(res => this.setToken(res.token));
     return promise;
