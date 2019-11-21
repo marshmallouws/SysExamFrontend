@@ -14,6 +14,7 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
+import Register from "./Register";
 
 function App() {
   const [roles, setRoles] = useState([]);
@@ -75,6 +76,9 @@ function App() {
 
             <Route path="/login">
               <Login logInState={logInState} />
+            </Route>
+            <Route path="/register">
+              <Register facade={facade} />
             </Route>
             <PrivateRoute
               path="/user"

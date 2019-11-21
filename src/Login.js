@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import facade from "./apifacade";
 import {
     Redirect,
+    Link
   } from "react-router-dom";
 
 function Login(props) {
@@ -44,6 +45,9 @@ function Login(props) {
               <button className="btn btn-primary">Login</button>
             </div>
           </form>
+          <Link to="/register" className="btn btn-primary">
+          Register
+        </Link>
         </div>
       </div>
     )

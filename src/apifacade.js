@@ -35,6 +35,17 @@ class ApiFacade {
     return promise;
   };
 
+  register = (user, pass) => {
+    const options = this.makeOptions("POST", true, {
+      username: user,
+      password: pass
+    });
+
+    // TODO - call backend
+
+    return "apiface.js: Bruger IKKE oprettet (Ikke implementeret endnu)";
+  }
+
   getEvents = () => {
     const promise = fetch(URL + "/api/series/first15")
     .then(handleHttpErrors);
