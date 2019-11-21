@@ -1,13 +1,22 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 
-const Register = ({ facade }) => {
+const Register = ({ facade, logInState }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [redirect, setRedirect] = useState(false);
 
     const onSubmit = (e) => {
         e.preventDefault();
-        var register = facade.register(username, password);
-        alert("Username: " + username + " Password: " + password + " --- " + register);
+        facade.register(username, password)
+        .then(data => {
+            alert("Brugernavn '" + data.username +  "' oprettet!");
+            logInState(data.roles, username);
+            setRedirect(true);    
+        })
+        .catch(err => {
+          alert("Something went wrong!");
+        });
     }
 
     const onChange = (e) => {
@@ -17,6 +26,10 @@ const Register = ({ facade }) => {
             setPassword(e.target.value);
         }
     }
+
+    if(redirect) {
+        return <Redirect to="/user" />
+      }
 
     return (
         <div className="container container-small">

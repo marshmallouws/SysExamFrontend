@@ -78,7 +78,7 @@ function App() {
               <Login logInState={logInState} />
             </Route>
             <Route path="/register">
-              <Register facade={facade} />
+              <Register facade={facade} logInState={logInState} />
             </Route>
             <PrivateRoute
               path="/user"

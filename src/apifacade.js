@@ -41,9 +41,10 @@ class ApiFacade {
       password: pass
     });
 
-    // TODO - call backend
+    const promise = fetch(URL + "/api/auth/createuser", options).then(handleHttpErrors);
 
-    return "apiface.js: Bruger IKKE oprettet (Ikke implementeret endnu)";
+    promise.then(res => this.setToken(res.token));
+    return promise;
   }
 
   getEvents = () => {
