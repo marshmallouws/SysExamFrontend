@@ -29,7 +29,9 @@ class ApiFacade {
       username: user,
       password: pass
     });
-    const promise = fetch(URL + "/api/auth/login", options).then(handleHttpErrors);
+    const promise = fetch(URL + "/api/auth/login", options).then(
+      handleHttpErrors
+    );
 
     promise.then(res => this.setToken(res.token));
     return promise;
@@ -41,15 +43,27 @@ class ApiFacade {
       password: pass
     });
 
-    const promise = fetch(URL + "/api/auth/createuser", options).then(handleHttpErrors);
+    const promise = fetch(URL + "/api/auth/createuser", options).then(
+      handleHttpErrors
+    );
 
     promise.then(res => this.setToken(res.token));
     return promise;
-  }
+  };
 
   getEvents = () => {
-    const promise = fetch(URL + "/api/series/first15")
-    .then(handleHttpErrors);
+    const promise = fetch(URL + "/api/series/first15").then(handleHttpErrors);
+    return promise;
+  };
+
+  buyTickets = tickets => {
+    const options = this.makeOptions("POST", true, tickets);
+
+    const promise = fetch(URL + "/api/tickets/buy", options).then(
+      handleHttpErrors
+    );
+
+    promise.then(res => this.setToken(res.token));
     return promise;
   };
 

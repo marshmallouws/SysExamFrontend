@@ -2,10 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Event from "./Event";
 
-const EventDetails = ({ match, data }) => {
+const EventDetails = ({
+  match,
+  data,
+  tickets,
+  setTickets,
+  username,
+  handleBookmarks
+}) => {
   var event = data.find(e => e.id == match.params.eventId);
   var eventData;
-
   let videogameName = "Not found";
 
   // check if found and then generate content
@@ -17,7 +23,16 @@ const EventDetails = ({ match, data }) => {
             .split("-")
             .join(" ")
             .toUpperCase();
-    eventData = <Event event={event} returnLink={true} />;
+    eventData = (
+      <Event
+        event={event}
+        returnLink={true}
+        tickets={tickets}
+        setTickets={setTickets}
+        username={username}
+        handleBookmarks={handleBookmarks}
+      />
+    );
   } else {
     eventData = (
       <div className="event-box">

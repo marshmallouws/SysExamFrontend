@@ -1,11 +1,15 @@
 import React from "react";
 import Event from "./Event";
 
-const EventList = ({ data, selecter }) => {
+const EventList = ({ data, selecter, handleBookmarks }) => {
   const events = data.map((event, index) => (
     <tr key={index}>
       <td>
-        <Event event={event} selector={selecter} />
+        <Event
+          event={event}
+          selector={selecter}
+          handleBookmarks={handleBookmarks}
+        />
       </td>
     </tr>
   ));

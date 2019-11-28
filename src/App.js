@@ -28,6 +28,9 @@ function App() {
   const [events, setEvents] = useState([]); // all events from API call
   const [selected, setSelected] = useState([]); // what to show on page
 
+  const [tickets, setTickets] = useState([]);
+  const [bookmarks, setBookmarks] = useState([]);
+
   useEffect(() => {
     facade.getEvents().then(res => {
       console.log(res);
@@ -53,6 +56,13 @@ function App() {
     }
   };
 
+  const handleBookmarks = bookmark => {
+    // API toggle bookmark
+    // update setBookmarks array
+    setBookmarks([]);
+    console.log("bookmark called - " + bookmark);
+  };
+
   return (
     <Router>
       <Navbar />
@@ -60,16 +70,37 @@ function App() {
         <div className="row">
           <Switch>
             <Route exact path="/">
-              <EventList data={selected} selecter={handleSelectGameMain} />
-              <Sidebar />
+              <EventList
+                data={selected}
+                selecter={handleSelectGameMain}
+                bookmarks={bookmarks}
+                handleBookmarks={handleBookmarks}
+              />
+              <Sidebar
+                tickets={tickets}
+                setTickets={setTickets}
+                bookmarks={bookmarks}
+              />
             </Route>
 
             <Route
               path="/details/:eventId"
               render={props => (
                 <React.Fragment>
-                  <EventDetails data={events} {...props} />
-                  <Sidebar />
+                  <EventDetails
+                    data={events}
+                    tickets={tickets}
+                    setTickets={setTickets}
+                    username={username}
+                    bookmarks={bookmarks}
+                    handleBookmarks={handleBookmarks}
+                    {...props}
+                  />
+                  <Sidebar
+                    tickets={tickets}
+                    setTickets={setTickets}
+                    bookmarks={bookmarks}
+                  />
                 </React.Fragment>
               )}
             />

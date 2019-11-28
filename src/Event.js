@@ -1,7 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Event = ({ event, returnLink, selector }) => {
+const Event = ({
+  event,
+  returnLink,
+  selector,
+  tickets,
+  setTickets,
+  username,
+  handleBookmarks
+}) => {
   const beginTime =
     event.begin_at == null
       ? "TBA"
@@ -20,6 +28,35 @@ const Event = ({ event, returnLink, selector }) => {
     <Link to={`details/${event.id}`} className="btn btn-primary">
       Event Information
     </Link>
+  );
+
+  const ticketObj = {
+    sId: event.id,
+    username: username,
+    amount: 1,
+    event_name: event.full_name,
+    event_game: event.videogame.slug
+  };
+
+  const bookmarkObj = {
+    event_id: event.id,
+    username: username
+  };
+
+  const ticketInformation = returnLink ? (
+    <div className="ticket-information">
+      <button
+        className="btn btn-primary"
+        onClick={() => {
+          if (tickets.filter(t => t.sId === event.id).length <= 0)
+            setTickets([...tickets, ticketObj]);
+        }}
+      >
+        Add to Cart
+      </button>
+    </div>
+  ) : (
+    ""
   );
 
   return (
@@ -42,8 +79,17 @@ const Event = ({ event, returnLink, selector }) => {
           Prize Pool:{" "}
           <strong>{event.prizepool == null ? "TBA" : event.prizepool}</strong>
         </p>
+        {ticketInformation}
 
         {link}
+        <button
+          className="btn btn-secondary"
+          onClick={() => {
+            handleBookmarks("test");
+          }}
+        >
+          Bookmark
+        </button>
       </div>
       <div className="clear-floats"></div>
     </div>
