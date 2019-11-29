@@ -56,6 +56,10 @@ class ApiFacade {
     return promise;
   };
 
+  getSingleEvent = event => {
+    //missing backend
+  };
+
   buyTickets = tickets => {
     const options = this.makeOptions("POST", false, tickets);
 
@@ -82,6 +86,20 @@ class ApiFacade {
     );
 
     promise.then(res => this.setToken(res.token));
+    return promise;
+  };
+
+  getPurchases = username => {
+    const promise = fetch(URL + "/api/tickets/all/" + username).then(
+      handleHttpErrors
+    );
+    return promise;
+  };
+
+  getSinglePurchase = (username, event) => {
+    const promise = fetch(URL + "/api/tickets/" + username + "/" + event).then(
+      handleHttpErrors
+    );
     return promise;
   };
 

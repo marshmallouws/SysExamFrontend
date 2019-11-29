@@ -15,6 +15,7 @@ import {
   Redirect
 } from "react-router-dom";
 import Register from "./Register";
+import Purchase from "./Purchase";
 
 function App() {
   const [roles, setRoles] = useState([]);
@@ -32,6 +33,7 @@ function App() {
   const [selected, setSelected] = useState([]); // what to show on page
 
   const [tickets, setTickets] = useState([]);
+  const [updatePurchases, setUpdatePurchases] = useState([]);
   const [updateBookmarks, setUpdateBookmarks] = useState([]);
 
   useEffect(() => {
@@ -70,6 +72,15 @@ function App() {
     });
   };
 
+  const buyTickets = tickets => {
+    facade.buyTickets(tickets).then(res => {
+      if (res.length > 0) {
+        setTickets([]);
+        setUpdatePurchases([]);
+      }
+    });
+  };
+
   return (
     <Router>
       <Navbar />
@@ -88,6 +99,8 @@ function App() {
                 tickets={tickets}
                 setTickets={setTickets}
                 bookmarks={updateBookmarks}
+                buyTickets={buyTickets}
+                updatePurchases={updatePurchases}
                 username={username}
               />
             </Route>
@@ -109,6 +122,25 @@ function App() {
                     tickets={tickets}
                     setTickets={setTickets}
                     bookmarks={updateBookmarks}
+                    buyTickets={buyTickets}
+                    updatePurchases={updatePurchases}
+                    username={username}
+                  />
+                </React.Fragment>
+              )}
+            />
+
+            <Route
+              path="/order/:eventId"
+              render={props => (
+                <React.Fragment>
+                  <Purchase username={username} {...props} />
+                  <Sidebar
+                    tickets={tickets}
+                    setTickets={setTickets}
+                    bookmarks={updateBookmarks}
+                    buyTickets={buyTickets}
+                    updatePurchases={updatePurchases}
                     username={username}
                   />
                 </React.Fragment>

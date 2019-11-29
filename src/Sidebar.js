@@ -1,8 +1,15 @@
 import React, { useState } from "react";
-import facade from "./apifacade";
 import Bookmarks from "./Bookmarks.jsx";
+import PurchaseList from "./PurchaseList.jsx";
 
-const Sidebar = ({ tickets, setTickets, bookmarks, username }) => {
+const Sidebar = ({
+  tickets,
+  setTickets,
+  bookmarks,
+  username,
+  buyTickets,
+  purchases
+}) => {
   const cartItems =
     tickets.length < 1
       ? "Add some tickets to your cart!"
@@ -37,8 +44,7 @@ const Sidebar = ({ tickets, setTickets, bookmarks, username }) => {
         </p>
         <button
           onClick={() => {
-            console.log(tickets);
-            facade.buyTickets(tickets).then(res => console.log(res));
+            buyTickets(tickets);
           }}
           className="btn btn-primary checkout-btn"
         >
@@ -59,6 +65,7 @@ const Sidebar = ({ tickets, setTickets, bookmarks, username }) => {
     <div className="sidebar col-3">
       {cart}
       <Bookmarks bookmarks={bookmarks} username={username} />
+      <PurchaseList purchases={purchases} username={username} />
     </div>
   );
 };
