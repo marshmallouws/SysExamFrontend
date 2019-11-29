@@ -57,9 +57,27 @@ class ApiFacade {
   };
 
   buyTickets = tickets => {
-    const options = this.makeOptions("POST", true, tickets);
+    const options = this.makeOptions("POST", false, tickets);
 
     const promise = fetch(URL + "/api/tickets/buy", options).then(
+      handleHttpErrors
+    );
+
+    promise.then(res => this.setToken(res.token));
+    return promise;
+  };
+
+  getBookmarks = username => {
+    const promise = fetch(URL + "/api/series/userbookmarks/" + username).then(
+      handleHttpErrors
+    );
+    return promise;
+  };
+
+  saveBookmark = bookmarkObj => {
+    const options = this.makeOptions("POST", false, bookmarkObj);
+
+    const promise = fetch(URL + "/api/series/bookmark", options).then(
       handleHttpErrors
     );
 

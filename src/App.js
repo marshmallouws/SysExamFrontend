@@ -18,7 +18,10 @@ import Register from "./Register";
 
 function App() {
   const [roles, setRoles] = useState([]);
-  const [username, setUsername] = useState("");
+
+  // const [username, setUsername] = useState("");
+  // For debugging
+  const [username, setUsername] = useState("user");
 
   const logInState = (r, u) => {
     setRoles(r);
@@ -29,7 +32,7 @@ function App() {
   const [selected, setSelected] = useState([]); // what to show on page
 
   const [tickets, setTickets] = useState([]);
-  const [bookmarks, setBookmarks] = useState([]);
+  const [updateBookmarks, setUpdateBookmarks] = useState([]);
 
   useEffect(() => {
     facade.getEvents().then(res => {
@@ -57,10 +60,14 @@ function App() {
   };
 
   const handleBookmarks = bookmark => {
-    // API toggle bookmark
-    // update setBookmarks array
-    setBookmarks([]);
-    console.log("bookmark called - " + bookmark);
+    const bookmarkObj = {
+      event_id: bookmark,
+      user_id: username
+    };
+    console.log(bookmarkObj);
+    facade.saveBookmark(bookmarkObj).then(res => {
+      setUpdateBookmarks([]);
+    });
   };
 
   return (
@@ -73,13 +80,15 @@ function App() {
               <EventList
                 data={selected}
                 selecter={handleSelectGameMain}
-                bookmarks={bookmarks}
+                bookmarks={updateBookmarks}
                 handleBookmarks={handleBookmarks}
+                username={username}
               />
               <Sidebar
                 tickets={tickets}
                 setTickets={setTickets}
-                bookmarks={bookmarks}
+                bookmarks={updateBookmarks}
+                username={username}
               />
             </Route>
 
@@ -92,14 +101,15 @@ function App() {
                     tickets={tickets}
                     setTickets={setTickets}
                     username={username}
-                    bookmarks={bookmarks}
+                    bookmarks={updateBookmarks}
                     handleBookmarks={handleBookmarks}
                     {...props}
                   />
                   <Sidebar
                     tickets={tickets}
                     setTickets={setTickets}
-                    bookmarks={bookmarks}
+                    bookmarks={updateBookmarks}
+                    username={username}
                   />
                 </React.Fragment>
               )}

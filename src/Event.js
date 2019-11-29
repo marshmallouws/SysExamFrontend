@@ -38,11 +38,6 @@ const Event = ({
     event_game: event.videogame.slug
   };
 
-  const bookmarkObj = {
-    event_id: event.id,
-    username: username
-  };
-
   const ticketInformation = returnLink ? (
     <div className="ticket-information">
       <button
@@ -85,7 +80,7 @@ const Event = ({
         <button
           className="btn btn-secondary"
           onClick={() => {
-            handleBookmarks("test");
+            handleBookmarks(event.id);
           }}
         >
           Bookmark
