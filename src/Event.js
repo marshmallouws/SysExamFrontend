@@ -30,6 +30,14 @@ const Event = ({
     </Link>
   );
 
+  const location = returnLink ? (
+    <p>
+      Location: {event.location.name}, {event.location.address}
+    </p>
+  ) : (
+    ""
+  );
+
   const ticketObj = {
     sId: event.id,
     username: username,
@@ -74,6 +82,7 @@ const Event = ({
           Prize Pool:{" "}
           <strong>{event.prizepool == null ? "TBA" : event.prizepool}</strong>
         </p>
+        {location}
         {ticketInformation}
 
         {link}
