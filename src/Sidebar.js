@@ -8,7 +8,7 @@ const Sidebar = ({
   bookmarks,
   username,
   buyTickets,
-  purchases
+  updatePurchases
 }) => {
   const cartItems =
     tickets.length < 1
@@ -65,7 +65,7 @@ const Sidebar = ({
     <div className="sidebar col-3">
       {cart}
       <Bookmarks bookmarks={bookmarks} username={username} />
-      <PurchaseList purchases={purchases} username={username} />
+      <PurchaseList purchases={updatePurchases} username={username} />
     </div>
   );
 };
