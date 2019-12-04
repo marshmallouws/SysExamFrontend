@@ -57,7 +57,10 @@ class ApiFacade {
   };
 
   getSingleEvent = event => {
-    //missing backend
+    const promise = fetch(URL + "/api/series/single/" + event).then(
+      handleHttpErrors
+    );
+    return promise;
   };
 
   buyTickets = tickets => {
