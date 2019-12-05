@@ -10,7 +10,14 @@ const EventDetails = ({
   username,
   handleBookmarks
 }) => {
-  const [eventData, setEventData] = useState(false);
+  const [eventData, setEventData] = useState(
+    <div className="event-box">
+      <p>No event found with id {match.params.eventId}</p>
+      <Link to="/" className="btn btn-primary">
+        Back
+      </Link>
+    </div>
+  );
   let event;
   const [videogameName, setVideogameName] = useState("Not found");
   useEffect(() => {
@@ -39,15 +46,6 @@ const EventDetails = ({
               username={username}
               handleBookmarks={handleBookmarks}
             />
-          );
-        } else {
-          setEventData(
-            <div className="event-box">
-              <p>No event found with id {match.params.eventId}</p>
-              <Link to="/" className="btn btn-primary">
-                Back
-              </Link>
-            </div>
           );
         }
       });

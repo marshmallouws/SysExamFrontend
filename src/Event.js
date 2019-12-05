@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import FlightDetails from "./FlightDetails";
 
 const Event = ({
   event,
@@ -38,6 +39,8 @@ const Event = ({
     ""
   );
 
+  const flight = returnLink ? <FlightDetails event={event} /> : "";
+
   const ticketObj = {
     sId: event.id,
     username: username,
@@ -47,7 +50,9 @@ const Event = ({
   };
 
   const ticketInformation = returnLink ? (
-    <div className="ticket-information">
+    <div className="ticket-information m-2">
+      <h4>Tickets</h4>
+      <h6>1x Event Ticket 500.00 DKK</h6>
       <button
         className="btn btn-primary"
         onClick={() => {
@@ -84,16 +89,18 @@ const Event = ({
         </p>
         {location}
         {ticketInformation}
-
-        {link}
-        <button
-          className="btn btn-secondary"
-          onClick={() => {
-            handleBookmarks(event.id);
-          }}
-        >
-          Bookmark
-        </button>
+        {flight}
+        <div className="event-box-footer">
+          {link}
+          <button
+            className="btn btn-secondary"
+            onClick={() => {
+              handleBookmarks(event.id);
+            }}
+          >
+            Bookmark
+          </button>
+        </div>
       </div>
       <div className="clear-floats"></div>
     </div>
