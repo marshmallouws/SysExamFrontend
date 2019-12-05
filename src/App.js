@@ -175,25 +175,49 @@ function PrivateRoute({ component: Component, roles, username, ...rest }) {
         facade.getToken() != null ? (
           <Component {...props} roles={roles} username={username} />
         ) : (
-          <Redirect
-            to={{ pathname: "/login", state: { from: props.location } }}
-          />
-        )
+            <Redirect
+              to={{ pathname: "/login", state: { from: props.location } }}
+            />
+          )
       }
     />
   );
 }
 
 function LoggedIn(props) {
-  const { roles, username } = props;
+  const { roles, username } = props; // TODO add fav airport to props
+  const [airport, setAirport] = useState("");
+  const [currFav, setCurrFav] = useState("");
+
+  const onChange = (e) => {
+    console.log(e.target.value);
+    setAirport(e.target.value);
+  }
+
+  const onClick = (e) => {
+    e.preventDefault();
+
+    facade.setAirport(username, airport);
+    setCurrFav(airport)
+  }
+
+
   return (
     <div className="data-wrapper">
       <div className="info-box">
-        <h2 className="headline">Logged in as {username}</h2>
-        <h4>Roles:</h4>
-        {roles.map((elem, index) => (
-          <h5 key={index}>{elem}</h5>
-        ))}
+        <h2 className="headline">Set preferred airport</h2>
+        <h4>Current airport: {currFav}</h4>
+        <form onSubmit={onClick} onChange={onChange}>
+        <select name="airport">
+          <option value="">Choose airport</option>
+          <option value="BMA-sky">BMA</option>
+          <option value="STOC-sky">STO</option>
+          <option value="ARN-sky">ARN</option>
+          <option value="NYO-sky">NYO</option>
+          <option value="VST-sky">VST</option>
+        </select>
+        <button className="btn btn-primary">Submit</button>
+        </form>
       </div>
     </div>
   );

@@ -30,7 +30,7 @@ function Login(props) {
     }
   
     if(redirect) {
-      return <Redirect to="/user" />
+      return <Redirect to="/" />
     }
   
     return (
