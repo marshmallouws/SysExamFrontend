@@ -12,7 +12,7 @@ const Sidebar = ({
 }) => {
   const cartItems =
     tickets.length < 1
-      ? "Add some tickets to your cart!"
+      ? "Add something to your cart!"
       : tickets.map((t, index) => (
           <div className="checkout-item" key={index}>
             <h6>
@@ -55,7 +55,7 @@ const Sidebar = ({
 
   const cart = (
     <div className="sidebar-box">
-      <h4>Ticket Cart</h4>
+      <h4>Shopping Cart</h4>
       {cartItems}
       {checkoutBtn}
     </div>
