@@ -124,7 +124,6 @@ h2.headline {
 }
 
 .event-box .information {
-  float: left;
 }
 
 .event-box img {
@@ -136,6 +135,7 @@ h2.headline {
 
 .event-box h3 {
   text-align: left;
+  float: left;
   font-size: 15pt;
   border-bottom: 2px solid var(--primary-light);
 }

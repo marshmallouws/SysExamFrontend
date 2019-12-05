@@ -87,6 +87,7 @@ const Event = ({
         <h3>
           {event.full_name} - {event.league.name}
         </h3>
+        <p>&nbsp;</p>
         <p>{eventTimes}</p>
         <p>{event.tournaments.length} Tournament(s)</p>
         <p>
