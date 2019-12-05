@@ -32,9 +32,12 @@ const Event = ({
   );
 
   const location = returnLink ? (
-    <p>
-      Location: {event.location.name}, {event.location.address}
-    </p>
+    <React.Fragment>
+      <p>
+        Location: {event.location.name}, {event.location.address}
+      </p>
+      <hr />
+    </React.Fragment>
   ) : (
     ""
   );
@@ -50,19 +53,22 @@ const Event = ({
   };
 
   const ticketInformation = returnLink ? (
-    <div className="ticket-information m-2">
-      <h4>Tickets</h4>
-      <h6>1x Event Ticket 500.00 DKK</h6>
-      <button
-        className="btn btn-primary"
-        onClick={() => {
-          if (tickets.filter(t => t.sId === event.id).length <= 0)
-            setTickets([...tickets, ticketObj]);
-        }}
-      >
-        Add to Cart
-      </button>
-    </div>
+    <React.Fragment>
+      <div className="ticket-information m-2">
+        <h4>Tickets</h4>
+        <h6>1x Event Ticket 500.00 DKK</h6>
+        <button
+          className="btn btn-primary"
+          onClick={() => {
+            if (tickets.filter(t => t.sId === event.id).length <= 0)
+              setTickets([...tickets, ticketObj]);
+          }}
+        >
+          Add to Cart
+        </button>
+      </div>
+      <hr />
+    </React.Fragment>
   ) : (
     ""
   );
@@ -88,11 +94,10 @@ const Event = ({
           <strong>{event.prizepool == null ? "TBA" : event.prizepool}</strong>
         </p>
         {location}
-        <hr />
         {ticketInformation}
-        <hr />
         {flight}
         <div className="event-box-footer">
+          <hr />
           {link}
           <button
             className="btn btn-secondary"
