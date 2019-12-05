@@ -24,10 +24,11 @@ class ApiFacade {
     localStorage.removeItem("jwtToken");
   };
 
-  login = (user, pass) => {
+  login = (user, pass, air) => {
     const options = this.makeOptions("POST", true, {
       username: user,
-      password: pass
+      password: pass,
+      airport: air
     });
     const promise = fetch(URL + "/api/auth/login", options).then(
       handleHttpErrors
@@ -37,10 +38,11 @@ class ApiFacade {
     return promise;
   };
 
-  register = (user, pass) => {
+  register = (user, pass, favAirport) => {
     const options = this.makeOptions("POST", true, {
       username: user,
-      password: pass
+      password: pass,
+      airport: favAirport
     });
 
     const promise = fetch(URL + "/api/auth/createuser", options).then(
