@@ -149,6 +149,11 @@ h2.headline {
   cursor: pointer;
 }
 
+.event-box hr {
+  background: var(--primary-light);
+  height: 1px;
+}
+
 .event-box-footer {
   margin-top: 50px;
 }

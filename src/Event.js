@@ -88,7 +88,9 @@ const Event = ({
           <strong>{event.prizepool == null ? "TBA" : event.prizepool}</strong>
         </p>
         {location}
+        <hr />
         {ticketInformation}
+        <hr />
         {flight}
         <div className="event-box-footer">
           {link}

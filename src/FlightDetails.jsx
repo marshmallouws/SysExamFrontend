@@ -7,7 +7,8 @@ const FlightDetails = ({ event }) => {
 
   return (
     <div className="m-2">
-      <h4>Recommended Flight</h4>
+      <h4>Travel</h4>
+      <h6>Recommended Flight</h6>
       <p>
         Destination: <strong>{event.location.airport}</strong>
       </p>
