@@ -9,6 +9,11 @@ const Register = ({ facade, logInState }) => {
 
     const onSubmit = (e) => {
         e.preventDefault();
+
+        if(username === "" || password === "") {
+            return;
+        } 
+
         facade.register(username, password, favAirport)
             .then(data => {
                 alert("Brugernavn '" + data.username + "' oprettet!");

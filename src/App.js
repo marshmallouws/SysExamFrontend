@@ -31,6 +31,12 @@ function App() {
     setAirport(a);
   };
 
+  const logout = () => {
+    setUsername("");
+    setAirport("");
+    setRoles([]);
+  }
+
   const [events, setEvents] = useState([]); // all events from API call
   const [selected, setSelected] = useState([]); // what to show on page
 
@@ -85,7 +91,7 @@ function App() {
 
   return (
     <Router>
-      <Navbar />
+      <Navbar logout={logout} />
       <div className="page-wrapper">
         <div className="row">
           <Switch>

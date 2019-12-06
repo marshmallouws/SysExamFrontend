@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import facade from "./apifacade";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 
 function Navbar(props) {
   const [isAuthenticating, setIsAuthenticating] = useState(true);
@@ -9,6 +9,7 @@ function Navbar(props) {
   const logout = () => {
     facade.logout();
     userHasAuthenticated(false);
+    props.logout();
   };
 
   useEffect(() => {

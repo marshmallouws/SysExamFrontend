@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import FlightDetails from "./FlightDetails";
+import facade from "./apifacade";
 
 const Event = ({
   event,
@@ -9,8 +10,10 @@ const Event = ({
   tickets,
   setTickets,
   username,
-  handleBookmarks
+  handleBookmarks,
 }) => {
+  const[isLoggedIn, setIsLoggedIn] = useState(false);
+
   const beginTime =
     event.begin_at == null
       ? "TBA"
@@ -100,7 +103,8 @@ const Event = ({
         <div className="event-box-footer">
           <hr />
           {link}
-          <button
+          {facade.getToken() ? (
+            <button
             className="btn btn-secondary"
             onClick={() => {
               handleBookmarks(event.id);
@@ -108,6 +112,8 @@ const Event = ({
           >
             Bookmark
           </button>
+          ) : (<div></div>)}
+
         </div>
       </div>
       <div className="clear-floats"></div>
