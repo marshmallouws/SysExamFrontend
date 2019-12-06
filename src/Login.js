@@ -14,7 +14,7 @@ function Login(props) {
     const login = (event) => {
       event.preventDefault();
       facade.login(username, password)
-        .then(data => {props.logInState(data.roles, username); setRedirect(true) })
+        .then(data => {props.logInState(data.roles, username, data.airport); setRedirect(true); console.log(data.airport) })
         .catch(err => {
           setErr("Wrong username or password");
         });

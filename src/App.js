@@ -23,10 +23,12 @@ function App() {
   // const [username, setUsername] = useState("");
   // For debugging
   const [username, setUsername] = useState("user");
+  const [airport, setAirport] = useState("");
 
-  const logInState = (r, u) => {
+  const logInState = (r, u, a) => {
     setRoles(r);
     setUsername(u);
+    setAirport(a);
   };
 
   const [events, setEvents] = useState([]); // all events from API call
@@ -158,6 +160,7 @@ function App() {
               component={LoggedIn}
               roles={roles}
               username={username}
+              airport={airport}
             />
           </Switch>
         </div>
@@ -167,13 +170,13 @@ function App() {
   );
 }
 
-function PrivateRoute({ component: Component, roles, username, ...rest }) {
+function PrivateRoute({ component: Component, roles, username, airport, ...rest }) {
   return (
     <Route
       {...rest}
       render={props =>
         facade.getToken() != null ? (
-          <Component {...props} roles={roles} username={username} />
+          <Component {...props} roles={roles} username={username} airport={airport} />
         ) : (
             <Redirect
               to={{ pathname: "/login", state: { from: props.location } }}
@@ -185,20 +188,20 @@ function PrivateRoute({ component: Component, roles, username, ...rest }) {
 }
 
 function LoggedIn(props) {
-  const { roles, username } = props; // TODO add fav airport to props
-  const [airport, setAirport] = useState("");
-  const [currFav, setCurrFav] = useState("");
+  const { roles, username, airport } = props; // TODO add fav airport to props
+  const [newAirport, setNewAirport] = useState("");
+  const [currFav, setCurrFav] = useState(airport);
 
   const onChange = (e) => {
     console.log(e.target.value);
-    setAirport(e.target.value);
+    setNewAirport(e.target.value);
   }
 
   const onClick = (e) => {
     e.preventDefault();
 
-    facade.setAirport(username, airport);
-    setCurrFav(airport)
+    facade.setAirport(username, newAirport);
+    setCurrFav(newAirport)
   }
 
 
@@ -207,6 +210,7 @@ function LoggedIn(props) {
       <div className="info-box">
         <h2 className="headline">Set preferred airport</h2>
         <h4>Current airport: {currFav}</h4>
+        {console.log(airport)}
         <form onSubmit={onClick} onChange={onChange}>
         <select name="airport">
           <option value="">Choose airport</option>
