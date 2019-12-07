@@ -28,11 +28,11 @@ class ApiFacade {
     const options = this.makeOptions("POST", false, {
       username: username,
       airport: airport
-    })
+    });
     const promise = fetch(URL + "/api/user/airport", options).then(
       handleHttpErrors
     );
-  }
+  };
 
   login = (user, pass, air) => {
     const options = this.makeOptions("POST", true, {
@@ -118,7 +118,20 @@ class ApiFacade {
     return promise;
   };
 
-
+  getFlights = (origin, destination, date) => {
+    const today = new Date();
+    let departDate = new Date(date);
+    if (departDate < today)
+      departDate = today.toLocaleDateString().replace(/\//g, "-");
+    origin = origin === "" ? "CPH-sky" : origin;
+    // for testing - no flights returned on most dates, so using the sample date from their documentation :
+    departDate = "2019-12-24";
+    //
+    const promise = fetch(
+      URL + `/api/flight/${departDate}/${origin}/${destination}`
+    ).then(handleHttpErrors);
+    return promise;
+  };
 
   makeOptions(method, addToken, body) {
     var opts = {

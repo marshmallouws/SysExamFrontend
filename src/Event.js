@@ -11,8 +11,9 @@ const Event = ({
   setTickets,
   username,
   handleBookmarks,
+  airport
 }) => {
-  const[isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const beginTime =
     event.begin_at == null
@@ -45,14 +46,25 @@ const Event = ({
     ""
   );
 
-  const flight = returnLink ? <FlightDetails event={event} /> : "";
+  const flight = returnLink ? (
+    <FlightDetails
+      event={event}
+      airport={airport}
+      username={username}
+      tickets={tickets}
+      setTickets={setTickets}
+    />
+  ) : (
+    ""
+  );
 
   const ticketObj = {
     sId: event.id,
     username: username,
     amount: 1,
     event_name: event.full_name,
-    event_game: event.videogame.slug
+    event_game: event.videogame.slug,
+    type: "ticket"
   };
 
   const ticketInformation = returnLink ? (
@@ -63,8 +75,7 @@ const Event = ({
         <button
           className="btn btn-primary"
           onClick={() => {
-            if (tickets.filter(t => t.sId === event.id).length <= 0)
-              setTickets([...tickets, ticketObj]);
+            setTickets([...tickets, ticketObj]);
           }}
         >
           Add to Cart
@@ -105,15 +116,16 @@ const Event = ({
           {link}
           {facade.getToken() ? (
             <button
-            className="btn btn-secondary"
-            onClick={() => {
-              handleBookmarks(event.id);
-            }}
-          >
-            Bookmark
-          </button>
-          ) : (<div></div>)}
-
+              className="btn btn-secondary"
+              onClick={() => {
+                handleBookmarks(event.id);
+              }}
+            >
+              Bookmark
+            </button>
+          ) : (
+            <div></div>
+          )}
         </div>
       </div>
       <div className="clear-floats"></div>

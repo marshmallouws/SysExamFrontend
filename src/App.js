@@ -35,7 +35,7 @@ function App() {
     setUsername("");
     setAirport("");
     setRoles([]);
-  }
+  };
 
   const [events, setEvents] = useState([]); // all events from API call
   const [selected, setSelected] = useState([]); // what to show on page
@@ -124,6 +124,7 @@ function App() {
                     username={username}
                     bookmarks={updateBookmarks}
                     handleBookmarks={handleBookmarks}
+                    airport={airport}
                     {...props}
                   />
                   <Sidebar
@@ -176,18 +177,29 @@ function App() {
   );
 }
 
-function PrivateRoute({ component: Component, roles, username, airport, ...rest }) {
+function PrivateRoute({
+  component: Component,
+  roles,
+  username,
+  airport,
+  ...rest
+}) {
   return (
     <Route
       {...rest}
       render={props =>
         facade.getToken() != null ? (
-          <Component {...props} roles={roles} username={username} airport={airport} />
+          <Component
+            {...props}
+            roles={roles}
+            username={username}
+            airport={airport}
+          />
         ) : (
-            <Redirect
-              to={{ pathname: "/login", state: { from: props.location } }}
-            />
-          )
+          <Redirect
+            to={{ pathname: "/login", state: { from: props.location } }}
+          />
+        )
       }
     />
   );
@@ -198,18 +210,17 @@ function LoggedIn(props) {
   const [newAirport, setNewAirport] = useState("");
   const [currFav, setCurrFav] = useState(airport);
 
-  const onChange = (e) => {
+  const onChange = e => {
     console.log(e.target.value);
     setNewAirport(e.target.value);
-  }
+  };
 
-  const onClick = (e) => {
+  const onClick = e => {
     e.preventDefault();
 
     facade.setAirport(username, newAirport);
-    setCurrFav(newAirport)
-  }
-
+    setCurrFav(newAirport);
+  };
 
   return (
     <div className="data-wrapper">
@@ -218,15 +229,15 @@ function LoggedIn(props) {
         <h4>Current airport: {currFav}</h4>
         {console.log(airport)}
         <form onSubmit={onClick} onChange={onChange}>
-        <select name="airport">
-          <option value="">Choose airport</option>
-          <option value="BMA-sky">BMA</option>
-          <option value="STOC-sky">STO</option>
-          <option value="ARN-sky">ARN</option>
-          <option value="NYO-sky">NYO</option>
-          <option value="VST-sky">VST</option>
-        </select>
-        <button className="btn btn-primary">Submit</button>
+          <select name="airport">
+            <option value="">Choose airport</option>
+            <option value="BMA-sky">BMA</option>
+            <option value="STOC-sky">STO</option>
+            <option value="ARN-sky">ARN</option>
+            <option value="NYO-sky">NYO</option>
+            <option value="VST-sky">VST</option>
+          </select>
+          <button className="btn btn-primary">Submit</button>
         </form>
       </div>
     </div>

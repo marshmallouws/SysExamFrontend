@@ -8,7 +8,8 @@ const EventDetails = ({
   tickets,
   setTickets,
   username,
-  handleBookmarks
+  handleBookmarks,
+  airport
 }) => {
   const [eventData, setEventData] = useState(
     <div className="event-box">
@@ -45,6 +46,7 @@ const EventDetails = ({
               setTickets={setTickets}
               username={username}
               handleBookmarks={handleBookmarks}
+              airport={airport}
             />
           );
         }

@@ -27,7 +27,8 @@ const Purchase = ({ match, username }) => {
             <td>
               <div className="event-box">
                 <h4>
-                  {purchase.amount}x ticket for event #{purchase.series_id}
+                  {purchase.amount}x ticket/flight for event #
+                  {purchase.series_id}
                 </h4>
               </div>
             </td>
