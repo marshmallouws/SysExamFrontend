@@ -22,7 +22,7 @@ function App() {
 
   // const [username, setUsername] = useState("");
   // For debugging
-  const [username, setUsername] = useState("user");
+  const [username, setUsername] = useState("");
   const [airport, setAirport] = useState("");
 
   const logInState = (r, u, a) => {
